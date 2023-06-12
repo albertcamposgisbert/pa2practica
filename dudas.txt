@@ -1,0 +1,14 @@
+
+1. Control de errores en el main, a partir de excepciones 
+    try
+        if
+            llamadas
+        else
+            raise Exception
+
+    except:
+        print("error")
+
+2. clase tret?
+
+
