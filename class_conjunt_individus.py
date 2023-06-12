@@ -3,6 +3,15 @@ from easyinput import read
 from bintree import *
 from class_individu import *
 
+"""
+Conjunt d'Individus: L'estat (privat!) de les instàncies d'aquesta classe (en
+realitat només en caldrà una per experiment) consistirà en l'arbre binari que defineix la
+relació entre individus i una col·lecció amb les instàncies d'Individu que hagin
+aparegut. Quines operacions us fan falta (els mètodes públics) és quelcom que heu de
+decidir vosaltres.
+
+"""
+
 class conjunt_individus:
     
     def __init__(self) -> None:

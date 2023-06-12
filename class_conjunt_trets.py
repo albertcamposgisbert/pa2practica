@@ -1,4 +1,15 @@
 
+"""
+Conjunt de Trets: L'estat (privat!) de les instàncies d'aquesta classe (en realitat
+només en caldrà una per experiment) consistirà en un diccionari de parelles
+(nom_tret, info_tret), on nom_tret és una string i info_tret pot ser una tupla
+de dos elements, una instància de Parell de Cromosomes i un conjunt d'instàncies
+d'Individu (aquells que tenen el tret). Aquí, l'expressió conjunt es refereix a
+l'estructura de dades set, que Python ens proporciona
+. Quines operacions us fan falta (els mètodes públics) és quelcom que heu de decidir vosaltres.
+"""
+
+
 class conjunt_trets:
     
     def __init__(self) -> None:

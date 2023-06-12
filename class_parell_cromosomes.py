@@ -1,3 +1,9 @@
+"""
+Parell de Cromosomes: L'estat (privat!) de les instàncies d'aquesta classe pot
+consistir en un (o més) contenidors amb els bits dels cromosomes. Quines operacions us
+fan falta (els mètodes públics) és quelcom que heu de decidir vosaltres.
+
+"""
 
 class parell_cromosomes:
     
