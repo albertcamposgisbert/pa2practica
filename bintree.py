@@ -143,25 +143,8 @@ class BinTree:
         else:
             return _inorder(self._root)
 
-    def levelorder(self):
-        """
-        returns a list with the elements of the BinTree, ordered 
-        as is specified in the definition of the levels-order traversal.
-        """
-        if self.empty():
-            return []
-        else:
-            resultat = []
-            q = Cua()
-            q.enqueue(self._root)
-            while not q.buida():
-                tt = q.dequeue()
-                resultat.append(tt._element)
-                if tt._left is not None:
-                    q.enqueue(tt._left)
-                if tt._right is not None:
-                    q.enqueue(tt._right)
-            return resultat
+
+
 
     def poda_subarbre(self,x):
         """
@@ -214,57 +197,3 @@ class BinTree:
                 r_esq = self.get_left().__repr__()
                 r_dre = self.get_right().__repr__()
                 return f"BinTree({rt}, left={r_esq}, right={r_dre})"
-            
-
-
-class Cua:
-    # ----------------------------------------------------
-    # Cada element de la cua serà una instància de _Node
-    class _Node:
-        __slots__ = '_element', '_next' 
-        def __init__(self, element, next):
-            self._element = element 
-            self._next = next              
-    # ------------------------------------------
-
-    def __init__(self):
-        self.__cap = None
-        self.__cua = None
-        self.__mida = 0
-
-    def buida(self):
-        return self.__mida == 0
- 
-    def mida(self):
-        return self.__mida
-
-    def first(self):
-        # Pre: La cua no és buida
-        return (self.__cap)._element
-
-    def enqueue(self, e):
-        # nou node al final de la cua
-        nou = self._Node(e, None)   
-        if self.buida():
-            # cas especial, cua buida
-            self.__cap = nou       
-        else:
-            self.__cua._next = nou
-        # actualitzar referència al darrer node
-        self.__cua = nou            
-        self.__mida += 1
-
-    def dequeue(self):
-        # Pre: La cua no és buida
-        resposta = self.__cap._element
-        self.__cap = self.__cap._next
-        self.__mida -= 1
-        if self.buida():               
-            # cas especial, cua buida
-            # el __cap eliminat també
-            # era la cua
-            self.__cua = None          
-        return resposta
-
-
-

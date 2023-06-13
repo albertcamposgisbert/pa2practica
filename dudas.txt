@@ -1,0 +1,16 @@
+
+1. Control de errores en el main, a partir de excepciones 
+    try
+        if
+            llamadas
+        else
+            raise Exception
+
+    except:
+        print("error")
+
+2. clase tret?
+
+3. Lectura del fichero de entrada desde clases no desde el main?
+
+

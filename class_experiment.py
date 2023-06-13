@@ -1,9 +1,17 @@
 
 from easyinput import read
+from class_conjunt_individus import *
+from class_conjunt_trets import *
+
 
 class experiment:
 
-    def __init__(self, n, m):
-        self.nombre_individus = read(int)  #Nombre d'individus
-        self.nombre_gens = read(int)  #Nombre de gens de cada cromosoma
-        #arbre
+    def __init__(self):
+      
+        conjunt_individus = conjunt_individus()
+        conjunt_trets = conjunt_trets()
+        
+        
+    
+    
+
