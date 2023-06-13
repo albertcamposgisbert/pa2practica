@@ -6,3 +6,12 @@ Python ens proporciona. Quines operacions us fan falta (els mètodes públics) �
 quelcom que heu de decidir vosaltres.
 
 """
+
+class individu():
+    
+    def __init__(self) -> None:
+        pass
+    
+    def __str__(self) -> str:
+        
+    
