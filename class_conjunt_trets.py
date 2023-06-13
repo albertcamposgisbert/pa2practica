@@ -23,16 +23,16 @@ class conjunt_trets:
         pass
     
     def afegir_tret(self, numero_individu):
-        pass
+        pass  #veure si el tret ja hi és o no i posar-lo
     
     def treure_tret(self, tret):
-        pass
+        pass  #Veure si hi és i treure'l
     
     def get_individus_amb_tret(self, tret):
-        pass
+        pass #Mostro/escric tot els individus que pateixen el tret indicat
     
     def actualitzar_tret(self, tret):
-        pass
+        pass  #Per veure(llegir). 
     
     
     
