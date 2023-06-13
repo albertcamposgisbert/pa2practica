@@ -19,14 +19,7 @@ while comanda != "fi":
 
     if comanda == "experiment":
         #Must generate an instance of "conjunt trets" and "conjunt d'individus"
-        
-        nombre_individus = read(int)  #Nombre d'individus
-        nombre_gens = read(int)  #Nombre de gens de cada cromosoma
-        pass
-        """
-        individus = conjunt_individus()
-        trets = conjunt_trets()
-        """
+        experiment = experiment()
         
     elif comanda == "consulta_individu":
         
@@ -38,7 +31,7 @@ while comanda != "fi":
     
     elif comanda == "afegir_tret":
         #Must add tret into trets instance
-        
+        #Modificar (Incluir en trets o conjunt trets)
         tret = read(str)
         numero_individu = read(int)
         conjunt_trets.afegir_tret(tret, numero_individu)

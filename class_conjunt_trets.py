@@ -14,7 +14,7 @@ class conjunt_trets:
     
     def __init__(self) -> None:
         
-        __conjunt_trets = {} # Clave : tret | Valor : info de tret
+        __conjunt_trets = {} # Clave : nom_tret -> str | Valor : info de tret -> tupla (InstanciaParellCromosomes, InstanciasIndividusConTretComún)
         pass
     
     def __str__(self) -> None:

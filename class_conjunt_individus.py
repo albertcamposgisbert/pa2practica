@@ -16,29 +16,19 @@ class conjunt_individus:
     
     def __init__(self) -> None:
         
-        self.__numero_individus = read(int)
-        self.__numero_cromosomes = read(int)
+        self.__numero_individus = read(int) # Nombre d'individus
+        self.__numero_cromosomes = read(int) # Nombre de gens de cada cromosoma
         self.__individus = []
-        self.arbre = self.__llegeix_bintree_int(self, 0)
+        self.__arbre = self.__llegeix_bintree_int(self, 0)
         
         self.__crea_arbre()
         self.__assigna_cromosomes()
         
-        
-    def crea_arbre(self, __numero_individus):
-        # Crea el arbol
-        pass
-        
     
-    def llegeix_bintree_int(self, marca):
-        x = read(int)
-        if x != marca:
-            l = self.llegeix_bintree_int(marca)
-            r = self.llegeix_bintree_int(marca)
-            return BinTree(x,l,r)
-        else:
-            return BinTree()
-        
+    def __crea_arbre(self):
+        #Crea arbol para distribución trets
+        pass
+    
     def afegir_individu(self, cromosomes):
         # añadir individuo a la lista de conjunto de individuos, creando una instancia de la clase Individu
         pass
@@ -57,7 +47,6 @@ class conjunt_individus:
         
         return self.__numero_cromosomes
         
-    
     def __assigna_cromosomes(self):
         
         pass

@@ -11,4 +11,6 @@
 
 2. clase tret?
 
+3. Lectura del fichero de entrada desde clases no desde el main?
+
 
