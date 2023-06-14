@@ -8,32 +8,131 @@ d'Individu (aquells que tenen el tret). Aquí, l'expressió conjunt es refereix 
 l'estructura de dades set, que Python ens proporciona
 . Quines operacions us fan falta (els mètodes públics) és quelcom que heu de decidir vosaltres.
 """
-
-
+from class_conjunt_individus import *
+from collections import namedtuple
+Element = namedtuple("Element", ["nom_tret", "info_tret"])
+Subelement= namedtuple("Subelement", ["interseccio", "individus"])
 class conjunt_trets:
     
     def __init__(self) -> None:
-        
-        __conjunt_trets = {} # Clave : nom_tret -> str | Valor : info de tret -> tupla (InstanciaParellCromosomes, InstanciasIndividusConTretComún)
-        pass
-    
-    def __str__(self) -> None:
-        
-        # Debe dar la info del tret consultado en el main (consulta tret).
-        pass
-    
-    def afegir_tret(self, numero_individu):
-        pass  #veure si el tret ja hi és o no i posar-lo
-    
-    def treure_tret(self, tret):
-        pass  #Veure si hi és i treure'l
-    
-    def get_individus_amb_tret(self, tret):
-        pass #Mostro/escric tot els individus que pateixen el tret indicat
-    
+        self.__M = 10000
+        self.__taula = self.__M * [None] 
+        for i in range(self.__M):
+            self.__taula[i] = []
+        self.__n     = 0    # nombre d'elements emmagatzemats
+    def buit(self):
+        return self.__n == 0
+    def mida(self):
+        return self.__n
+    def __posicio(self, nom_tret, h):
+        """
+        Retorna la posició de la clau a la llista      
+        d'elements de la posició h, o None si no el troba.
+        """
+        l = self.__taula[h]
+        for i in range(len(l)):
+            if l[i].nom_tret == nom_tret:
+                return i
+        return None
+
+    def elements(self):
+        resultat = []
+        for ll in self.__taula:
+            for e in ll:
+                resultat.append(e)
+        return resultat
+
+    def __rehash(self):
+        elements = self.elements()
+        self.__M = 2*self.__M # Modifiquem la mida de la taula.
+        # Inicialitzem tot un altre cop
+        self.__taula = self.__M * [None] 
+        for i in range(self.__M):
+            self.__taula[i] = []
+        self.__n = 0
+        # re-posiciono les parelles (clau,valor)
+        for e in elements:
+            self.assigna(e.nom_tret,e.info_tret)
+      
+
+    def afegir_tret(self,nom_tret,numero_individu):
+        """
+        Assigna informació a una clau. Si la clau ja hi és dins
+        el diccionari, la informació és modificada.
+        cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
+        """
+        h = hash(nom_tret) % len(self.__taula)    # la funció 'hash' ens la dona Python
+        p = self.__posicio(nom_tret, h)
+        if p != None: #Això vol dir que el tret ja el teniem
+            elem = self.__taula[h][p]
+            elem2=elem.info_tret
+            interseccio_original= elem2.interseccio
+
+            cromosomes_nou_el=conjunt_individus.consulta_individu(numero_individu)
+
+            nova_interseccio=self.interseccion(interseccio_original,cromosomes_nou_el)
+
+            elem2.individus.append(numero_individu)
+            
+            self.__taula[h][p] = elem._replace(info_tret=elem2._replace(interseccio=nova_interseccio)) # Genera NOU element
+        else:
+            cromosomas=conjunt_individus.consulta_individu(numero_individu)
+            info=Subelement(cromosomas,[numero_individu])
+            self.__taula[h].append(Element(nom_tret, info))
+            self.__n += 1
+        alfa = self.__n / self.__M
+        if alfa >= 1:
+            self.__rehash()
+
+          
+    def treure_tret(self, tret, numero_individu):
+        """
+        Elimina la parella (clau, valor) del diccionari. Si la clau no pertany al
+        diccionari, res canvia.
+        cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
+        """
+        h = hash(tret) % len(self.__taula)
+        p = self.__posicio(tret, h)
+        element=self.__taula[h][p].info_tret
+        individuos= element.individus
+        tetret=False
+        if p != None:
+            if len(individuos)< 2 :    
+                self.__taula[h][p] = self.__taula[h][-1]
+                self.__taula[h].pop()
+                self.__n -= 1
+            else:
+                for i in individuos:
+                    if i==numero_individu:
+                        tetret=True
+                        individuos.pop(i)
+                        break
+                if tetret:
+                    element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
+                    for i in individuos:
+                        cromosomas=conjunt_individus.consulta_individu(i)
+                        intersection= self.interseccion(element.interseccio,cromosomas)
+                        element._replace(interseccio=intersection)
+
+
+                    
+    def consulta_tret(self, tret):
+        """
+        retorna el valor associat a una clau, None si la clau no hi és
+        cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
+        """
+        h = hash(tret) % len(self.__taula)
+        p = self.__posicio(tret, h)
+        element=self.__taula[h][p].info_tret
+        if p is not None:
+            interseccio=element.interseccio
+            individus=element.individus
+            return interseccio,individus
+        else:
+            return None
+""" Que es esto?
     def actualitzar_tret(self, tret):
         pass  #Per veure(llegir). 
-    
-    
+"""    
     
     
