@@ -126,9 +126,31 @@ class conjunt_trets:
             return interseccio,individus
         else:
             return None
-""" Que es esto?
-    def actualitzar_tret(self, tret):
-        pass  #Per veure(llegir). 
-"""    
-    
+    def interseccion(self,el1,el2):
+        i=0
+        a1,b1=list(el1[0]),list(el1[1])
+        a2,b2=list(el2[0]),list(el2[1])
+        a1_a2=[]
+        b1_b2=[]
+        m=len(a1)
+        #p1=''
+        #p2=''
+        while i<m:
+            if a1[i]==a2[i]:
+                a1_a2.append(a1[i])
+            else:
+                a1_a2.append('-')
+            if b1[i]==b2[i]:
+                b1_b2.append(b1[i])
+            else:
+                b1_b2.append('-')
+            if a1_a2[i]=='-' or b1_b2[i]=='-':
+                a1_a2[i]='-'
+                b1_b2[i]='-'
+            #p1+=a1_a2[i]
+            #p2+=b1_b2[i]
+            i+=1
+        inter=(a1_a2,b1_b2)
+        #inter=(p1,p2)    
+        return inter
     
