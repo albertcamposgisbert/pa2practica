@@ -20,10 +20,6 @@ class conjunt_trets:
         for i in range(self.__M):
             self.__taula[i] = []
         self.__n     = 0    # nombre d'elements emmagatzemats
-    def buit(self):
-        return self.__n == 0
-    def mida(self):
-        return self.__n
     def __posicio(self, nom_tret, h):
         """
         Retorna la posició de la clau a la llista      
