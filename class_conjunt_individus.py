@@ -18,7 +18,7 @@ class conjunt_individus:
         
         self.__numero_individus = read(int) # Nombre d'individus
         self.__numero_cromosomes = read(int) # Nombre de gens de cada cromosoma
-        self.__individus = ()
+        self.__individus = []
         self.__arbre = None
         self.__inicialitza_individus()
         self.__assigna_cromosomes(__numero_individus)
@@ -37,7 +37,16 @@ class conjunt_individus:
         
         for i in range(2*__numero_individus+1):
             self.arbre = llegeix_bintree_int(0)
-            self.__individus.append(individu(read(int)))
+            if read(int) != 0:
+                continue
+
+        for i in range(__numero_individus):
+            
+            self.__individus.append(individu(, read(int)))
+            
+
+        for i in range(__numero_individus):
+            
     
     def afegir_individu(self, cromosomes):
         # añadir individuo a la lista de conjunto de individuos, creando una instancia de la clase Individu
@@ -56,9 +65,10 @@ class conjunt_individus:
         # Devuelve el total de cromosomas
         return self.__numero_cromosomes
     
-    def __assigna_cromosomes(__numero_individus):
-        
-        for i in range(__numero_individus):
+
+            
+
+            
             
             
 
