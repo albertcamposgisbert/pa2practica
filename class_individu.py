@@ -11,13 +11,16 @@ from class_parell_cromosomes import *
 
 class individu():
     
-    def __init__(self, individu_id, parell_cromosomes) -> None:
+    def __init__(self, individu_id, parell_cromosomes):
         self.__individu_id = individu_id
         self.__parell_cromosomes = parell_cromosomes(parell_cromosomes)
         self.__trets = set()
     
     def __str__(self) -> str:
         
+        return f"{self.__parell_cromosomes}\n{self.__parell_cromosomes}\n" # Printar parell de cromosomes, i for para trets en set() alfabetic
+    
+    def ordena_trets_alfabeticament(self):
         pass
 
         
