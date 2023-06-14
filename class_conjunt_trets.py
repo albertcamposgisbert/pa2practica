@@ -46,11 +46,11 @@ class conjunt_trets:
         for i in range(self.__M):
             self.__taula[i] = []
         self.__n = 0
-        # re-posiciono les parelles (clau,valor)
-        for e in elements:
-            self.assigna(e.nom_tret,e.info_tret)
-      
 
+        for e in elements: #Aquí he fet canvis
+            h=hash(e.nom_tret) % len(self.__taula)
+            self.__taula[h].append(e)
+      
     def afegir_tret(self,nom_tret,numero_individu):
         """
         Assigna informació a una clau. Si la clau ja hi és dins
@@ -64,13 +64,14 @@ class conjunt_trets:
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
 
-            cromosomes_nou_el=conjunt_individus.consulta_individu(numero_individu)
+            cromosomes_nou_element=conjunt_individus.consulta_individu(numero_individu)
 
-            nova_interseccio=self.interseccion(interseccio_original,cromosomes_nou_el)
+            nova_interseccio=self.interseccion(interseccio_original,cromosomes_nou_element)
 
             elem2.individus.append(numero_individu)
-            
-            self.__taula[h][p] = elem._replace(info_tret=elem2._replace(interseccio=nova_interseccio)) # Genera NOU element
+
+            elem2._replace(interseccio=nova_interseccio)
+            self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
             cromosomas=conjunt_individus.consulta_individu(numero_individu)
             info=Subelement(cromosomas,[numero_individu])
@@ -93,22 +94,22 @@ class conjunt_trets:
         individuos= element.individus
         tetret=False
         if p != None:
-            if len(individuos)< 2 :    
+            for i in individuos:
+                if i==numero_individu:
+                    tetret=True
+                    individuos.pop(i)
+                    break
+            if len(individuos)==0 :    
                 self.__taula[h][p] = self.__taula[h][-1]
                 self.__taula[h].pop()
                 self.__n -= 1
-            else:
+            
+            elif tetret:
+                element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
                 for i in individuos:
-                    if i==numero_individu:
-                        tetret=True
-                        individuos.pop(i)
-                        break
-                if tetret:
-                    element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
-                    for i in individuos:
-                        cromosomas=conjunt_individus.consulta_individu(i)
-                        intersection= self.interseccion(element.interseccio,cromosomas)
-                        element._replace(interseccio=intersection)
+                    cromosomas=conjunt_individus.consulta_individu(i)
+                    intersection= self.interseccion(element.interseccio,cromosomas)
+                    element._replace(interseccio=intersection)
 
 
                     
