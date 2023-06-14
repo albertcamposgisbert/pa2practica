@@ -17,11 +17,25 @@ class individu():
         self.__trets = set()
     
     def __str__(self) -> str:
-        
-        return f"{self.__parell_cromosomes}\n{self.__parell_cromosomes}\n" # Printar parell de cromosomes, i for para trets en set() alfabetic
+        elements_trets = "\n".join(str(elem) for elem in self.__trets)
+        return f"{self.__parell_cromosomes}\n{elements_trets}" # Printar parell de cromosomes a partir de __str__, y trets
     
-    def ordena_trets_alfabeticament(self):
-        pass
+    def __ordena_trets_alfabeticament(self):
+        llista_ordenada = sorted(self.__trets)
+        set_ordenat = set(llista_ordenada)
+        return set_ordenat
+    
+    def get_id_by_individu(self):
+        return self.__individu_id
+    
+    def get_parell_cromosomes(self):
+        return self.__parell_cromosomes
+    
+    def afegir_tret(self, tret):
+        self.__trets.add(tret)
+        
+    def treure_tret(self, tret):
+        self.__trets.add(tret)
 
         
         

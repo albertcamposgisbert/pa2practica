@@ -14,51 +14,54 @@ decidir vosaltres.
 
 class conjunt_individus:
     
-    def __init__(self):
+    def __init__(self, marca = 0):
         
         self.__numero_individus = read(int) # Nombre d'individus
         self.__numero_cromosomes = read(int) # Nombre de gens de cada cromosoma
-        self.__individus = ()
-        self.__arbre = None
-        self.__inicialitza_individus()
-        self.__assigna_cromosomes(__numero_individus)
+        self.__individus = [None]
+        self.arbre = self.llegeix_bintree_int(marca)
+        
+        for i in range(self.__numero_individus):
+            self.__inicialitza_individus(, read(str)) # Falta recorrer arbol para id_individu
         
     def llegeix_bintree_int(self,marca):
         x = read(int)
         if x != marca:
             l = self.llegeix_bintree_int(marca)
             r = self.llegeix_bintree_int(marca)
+            
             return BinTree(x,l,r)
         else:
             return BinTree()
         
-    
-    def __inicialitza_individus(self, __numero_individus):
-        
-        for i in range(2*__numero_individus+1):
-            self.arbre = llegeix_bintree_int(0)
-            self.__individus.append(individu(read(int)))
-    
-    def afegir_individu(self, cromosomes):
-        # añadir individuo a la lista de conjunto de individuos, creando una instancia de la clase Individu
+    def distribucio_inorder(self, tret):
         pass
+        
+    def __inicialitza_individus(self, id_individu, cromosomes):
+        # Instancia un individuo de la clase individuo, y lo añade a "conjunt_individus"
+        self.__individus.append(individu(id_individu, cromosomes))
     
-    def afegir_tret(self, individu, tret):
+    def afegir_tret(self, id_individu, tret):
         # Asociar "tret" a un individuo concreto de la lista indexando en ella
-        pass
+        self.get_individu(id_individu).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
         
-    def get_individu(self, numero_individu):
+    def treure_tret(self, id_individu, tret):
+        # Quitar "tret" a un individuo concreto de la lista indexando en ella
+        self.get_individu(id_individu).treure_tret(tret)
+        
+    def get_individu(self, id_individu):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
+        for individu in self.__individus:
+            if individu.get_id_by_individu == id_individu:
+                return individu
         
-        return self.__individus[numero_individu]
+        else:
+            pass #Incluir error?
     
     def get_numero_cromosomes(self):
         # Devuelve el total de cromosomas
         return self.__numero_cromosomes
-    
-    def __assigna_cromosomes(__numero_individus):
-        
-        for i in range(__numero_individus):
+
             
             
 
