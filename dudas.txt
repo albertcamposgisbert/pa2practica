@@ -1,6 +1,4 @@
 
-2. clase tret?
-
 3. Lectura del fichero de entrada desde clases no desde el main?
 
 4. Afegir_tret -> main
@@ -14,3 +12,7 @@ Desde conjunt_trets se tiene que usar metodos publicos de conjunt_individus para
 7. limpiar fichero bintree
 
 8. Clase experiment?¿?¿?¿
+
+9. conjunt_trets porque no un diccionario normal?
+
+10. tratamiento de errores
