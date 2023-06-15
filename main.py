@@ -22,21 +22,23 @@ while comanda != "fi":
         experiment = experiment()
         
     elif comanda == "consulta_individu":
-        
-        conjunt_individus.consulta_individu()
+        individu_id = read(int)
+        conjunt_individus.consulta_individu(individu_id)
     
     elif comanda == "afegir_tret":
         #Must add tret into trets instance
         #Modificar (Incluir en trets o conjunt trets)
-        conjunt_individus.afegir_tret()
-        conjunt_trets.afegir_tret(tret) #Falta aclarar
+        tret, individu_id = read(str), read(int)
+        conjunt_individus.afegir_tret(tret, individu_id)
+        conjunt_trets.afegir_tret(tret, individu_id) #Falta aclarar
         
         pass
         
     elif comanda == "treure_tret":
         #Must remove tret from trets instance
-        conjunt_trets.treure_tret()
-        conjunt_individus.treure(tret) #Falta aclarar
+        tret, individu_id = read(str), read(int)
+        conjunt_trets.treure_tret(tret, individu_id)
+        conjunt_individus.treure(tret, individu_id) #Falta aclarar
 
     elif comanda == "consulta_tret":  #Si que tiene que imprimir el main porque lo que la clase le devolverá será dos cosas, la intersección y los individuos que la tienen
         

@@ -41,27 +41,22 @@ class conjunt_individus:
         # Instancia un individuo de la clase individuo, y lo añade a "conjunt_individus"
         self.__individus.append(individu(id_individu, cromosomes))
     
-    def afegir_tret(self, id_individu, tret):
+    def afegir_tret(self, tret, individu_id):
         # Asociar "tret" a un individuo concreto de la lista indexando en ella
-        tret = read(str)
-        individu_id = read(int)
         self.get_individu(individu_id).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
         
-    def treure_tret(self):
+    def treure_tret(self, tret, individu_id):
         # Quitar "tret" a un individuo concreto de la lista indexando en ella
-        tret = read(str)
-        individu_id = read(int)
         self.get_individu(individu_id).treure_tret(tret)
         
-    def consulta_individu(self):
+    def consulta_individu(self, individu_id):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
         individu_in = False
         for individu in self.__individus:
-            individu_id = read(int)
-            if individu.get_id_by_individu == individu_id:
+            if individu.__individu_id == individu_id:
                 individu_in = True
-                print(f"consulta individu {individu.individu_id}")
-                print(individu)
+                return individu.__cromosoma1, individu.__cromosoma2
+
                 
         if individu_in == False:
             print("error")
