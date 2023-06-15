@@ -10,12 +10,14 @@ l'estructura de dades set, que Python ens proporciona
 """
 from class_conjunt_individus import *
 from collections import namedtuple
+
 Element = namedtuple("Element", ["nom_tret", "info_tret"])
 Subelement= namedtuple("Subelement", ["interseccio", "individus"])
+
 class conjunt_trets:
     
-    def __init__(self) -> None:
-        self.__M = 10000
+    def __init__(self):
+        self.__M = 100
         self.__taula = self.__M * [None] 
         for i in range(self.__M):
             self.__taula[i] = []
@@ -60,6 +62,7 @@ class conjunt_trets:
         h = hash(nom_tret) % len(self.__taula)    # la funció 'hash' ens la dona Python
         p = self.__posicio(nom_tret, h)
         if p != None: #Això vol dir que el tret ja el teniem
+        
             elem = self.__taula[h][p]
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
@@ -93,13 +96,15 @@ class conjunt_trets:
         element=self.__taula[h][p].info_tret
         individuos= element.individus
         tetret=False
+        i=0
         if p != None:
-            for i in individuos:
+            while i < len(individuos): #tengi que cambiarlo por while
                 if i==numero_individu:
                     tetret=True
                     individuos.pop(i)
                     break
-            if len(individuos)==0 :    
+                i+=1
+            if len(individuos)==0 :   
                 self.__taula[h][p] = self.__taula[h][-1]
                 self.__taula[h].pop()
                 self.__n -= 1
