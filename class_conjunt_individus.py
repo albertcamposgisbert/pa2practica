@@ -18,11 +18,11 @@ class conjunt_individus:
         
         self.__numero_individus = read(int) # Nombre d'individus
         self.__numero_cromosomes = read(int) # Nombre de gens de cada cromosoma
-        self.__individus = [None]
+        self.__individus = []
         self.arbre = self.llegeix_bintree_int(marca)
         
-        for i in range(self.__numero_individus):
-            self.__inicialitza_individus(, read(str)) # Falta recorrer arbol para id_individu
+        for i in range(1, self.__numero_individus):
+            self.__inicialitza_individus(i, read(str))
         
     def llegeix_bintree_int(self,marca):
         x = read(int)
@@ -43,17 +43,24 @@ class conjunt_individus:
     
     def afegir_tret(self, id_individu, tret):
         # Asociar "tret" a un individuo concreto de la lista indexando en ella
-        self.get_individu(id_individu).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
+        tret = read(str)
+        individu_id = read(int)
+        self.get_individu(individu_id).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
         
-    def treure_tret(self, id_individu, tret):
+    def treure_tret(self):
         # Quitar "tret" a un individuo concreto de la lista indexando en ella
-        self.get_individu(id_individu).treure_tret(tret)
+        tret = read(str)
+        individu_id = read(int)
+        self.get_individu(individu_id).treure_tret(tret)
         
-    def get_individu(self, id_individu):
+    def consulta_individu(self):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
         for individu in self.__individus:
-            if individu.get_id_by_individu == id_individu:
-                return individu
+            individu_id = read(int)
+            if individu.get_id_by_individu == individu_id:
+                print(f"consulta individu {individu.individu_id}")
+                print(individu)
+                
         
         else:
             pass #Incluir error?

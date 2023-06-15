@@ -36,6 +36,9 @@ class individu():
         
     def treure_tret(self, tret):
         self.__trets.add(tret)
+        
+    def te_tret(self, tret):
+        return tret in self.__trets
 
         
         
