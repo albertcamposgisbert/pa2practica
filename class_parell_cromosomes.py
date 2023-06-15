@@ -40,9 +40,9 @@ class parell_cromosomes:
             if a1_a2[i]=='-' or b1_b2[i]=='-':
                 a1_a2[i]='-'
                 b1_b2[i]='-'
-            #p1+=a1_a2[i]
-            #p2+=b1_b2[i]
+            p1+=a1_a2[i]
+            p2+=b1_b2[i]
             i+=1
-        inter=(a1_a2,b1_b2)
-        #inter=(p1,p2)    
+        #inter=(a1_a2,b1_b2)
+        inter=(p1,p2)    
         return inter
