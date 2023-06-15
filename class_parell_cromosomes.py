@@ -15,7 +15,7 @@ class parell_cromosomes:
     def __str__(self):
         # str method must return "parell de cromosomes" in the data type in which they are contained.
         
-        return f"{self.__cromosoma1}\n{self.__cromosoma2individu}"
+        return f"{self.__cromosoma1}\n{self.__cromosoma2}"
 		
     def interseccio(self, parell_cromosomes):
         i=0
