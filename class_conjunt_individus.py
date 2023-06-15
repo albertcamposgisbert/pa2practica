@@ -53,9 +53,10 @@ class conjunt_individus:
         # Devuelve el individuo indexando en la lista por el id passado como argumento
         individu_in = False
         for individu in self.__individus:
-            if individu.__individu_id == individu_id:
+            if individu.get_id_by_individu() == individu_id:
                 individu_in = True
-                return individu.__cromosoma1, individu.__cromosoma2
+                cromosomas=individu.get_parell_cromosomes()
+                return (cromosoma.__cromosoma1, cromosoma.__cromosoma2)
 
                 
         if individu_in == False:

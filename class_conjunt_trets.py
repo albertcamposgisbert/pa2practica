@@ -115,7 +115,7 @@ class conjunt_trets:
                     cromosomas=conjunt_individus.consulta_individu(i)
                     intersection= self.interseccion(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)
-
+        else:
 
                     
     def consulta_tret(self, tret):
@@ -131,7 +131,8 @@ class conjunt_trets:
             individus=element.individus
             return interseccio,individus
         else:
-            return None
+            return 'error'
+
     def interseccion(self,el1,el2):
         i=0
         a1,b1=list(el1[0]),list(el1[1])
