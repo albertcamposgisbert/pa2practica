@@ -9,6 +9,7 @@ l'estructura de dades set, que Python ens proporciona
 . Quines operacions us fan falta (els mètodes públics) és quelcom que heu de decidir vosaltres.
 """
 from class_conjunt_individus import *
+from class_parell_cromosomes import *
 from collections import namedtuple
 
 Element = namedtuple("Element", ["nom_tret", "info_tret"])
@@ -69,15 +70,17 @@ class conjunt_trets:
 
             cromosomes_nou_element=conjunt_individus.consulta_individu(numero_individu)
 
-            nova_interseccio=self.interseccion(interseccio_original,cromosomes_nou_element)
+            nova_interseccio=parell_cromosomes.interseccion(interseccio_original,cromosomes_nou_element)
 
             elem2.individus.append(numero_individu)
 
             elem2._replace(interseccio=nova_interseccio)
+            class_conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
             cromosomas=conjunt_individus.consulta_individu(numero_individu)
             info=Subelement(cromosomas,[numero_individu])
+            class_conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h].append(Element(nom_tret, info))
             self.__n += 1
         alfa = self.__n / self.__M
@@ -110,12 +113,15 @@ class conjunt_trets:
                 self.__n -= 1
             
             elif tetret:
+                class_conjunt_individus.treure_tret(ret,numero_individu)
                 element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
                 for i in individuos:
                     cromosomas=conjunt_individus.consulta_individu(i)
-                    intersection= self.interseccion(element.interseccio,cromosomas)
+                    intersection= parell_cromosomes.interseccion(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)
+            
         else:
+                return 'error'
 
                     
     def consulta_tret(self, tret):
@@ -132,7 +138,7 @@ class conjunt_trets:
             return interseccio,individus
         else:
             return 'error'
-
+"""
     def interseccion(self,el1,el2):
         i=0
         a1,b1=list(el1[0]),list(el1[1])
@@ -160,4 +166,4 @@ class conjunt_trets:
         inter=(a1_a2,b1_b2)
         #inter=(p1,p2)    
         return inter
-    
+ """   
