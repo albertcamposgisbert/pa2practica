@@ -56,8 +56,7 @@ class conjunt_individus:
             if individu.get_id_by_individu() == individu_id:
                 individu_in = True
                 cromosomas=individu.get_parell_cromosomes()
-                return (cromosoma.__cromosoma1, cromosoma.__cromosoma2)
-
+                return (cromosomas.__cromosoma1, cromosomas.__cromosoma2)
                 
         if individu_in == False:
             print("error")
