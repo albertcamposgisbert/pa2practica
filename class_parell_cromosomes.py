@@ -44,5 +44,7 @@ class parell_cromosomes:
             p2+=b1_b2[i]
             i+=1
         #inter=(a1_a2,b1_b2)
-        inter=(p1,p2)    
-        return inter
+        inter=(p1,p2)
+        a=inter[0]
+        a+=inter[1]    
+        return parell_cromosomes(a)
