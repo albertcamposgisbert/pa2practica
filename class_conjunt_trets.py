@@ -138,8 +138,8 @@ class conjunt_trets:
         retorna el valor associat a una clau, None si la clau no hi és
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
-        h = hash(tret) % len(self.__taula)
-        p = self.__posicio(tret, h)
+        h = int(hash(tret) % len(self.__taula))
+        p = int(self.__posicio(tret, h))
         element=self.__taula[h][p].info_tret
         if p is not None:
             interseccio=element.interseccio
