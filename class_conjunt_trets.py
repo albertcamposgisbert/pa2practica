@@ -53,7 +53,7 @@ class conjunt_trets:
         else:
             cadena=arbol_resultado.inorder()
             cadena_print=' '.join(str(elemento) for elemento in cadena)
-            print(f"\n{cadena_print}")
+            print(f"{tret}\n{cadena_print}")
 
 
 
@@ -71,6 +71,7 @@ class conjunt_trets:
                                                         #no es uno de los indicados al inicio(tampoco si es menor que 1)
         if numero_individu>m or numero_individu<1:
             print('error')
+            
         else:
             if nom_tret in self.__trets: #Si tenemos ya la característica en el diccionario vemos primero
                 elem=self.__trets[nom_tret] #si ya hemos introducido ese individuo, en ese caso imprimimos un error
@@ -92,6 +93,7 @@ class conjunt_trets:
                 self.__conjunt_individus.afegir_tret(nom_tret,numero_individu) #como antés, añadimos la característica a la lista de características del individuo en la clase conjunt_individuos
                 cromosomas=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
                 self.__trets[nom_tret]=Element(cromosomas,[self.__conjunt_individus.get_individu_by_id(numero_individu)])
+                
     def treure_tret(self, tret, numero_individu):
         """
         Elimina de la lista de individuos de la característica correspondiente el individuo indicado y se
