@@ -24,15 +24,33 @@ class conjunt_trets:
 
     
     def distribucio_trets(self, tret):
-         
-        if self.arbre.get_left().te_tret(tret)==0 and self.arbre.get_left().leaf():
-            self.arbre.poda_subarbre(self.arbre.get_left())
+        def distribucio_trets_aux(arbol):
+            if arbol.empty():
+                return None
+            arbol_resultado= None
+            if self.__conjunt_individus.get_individu_by_id(arbol.get_root()).te_tret(tret):
+                arbol_resultado=BinTree(arbol.get_root())
+            if distribucio_trets_aux(arbol.get_left()) is not None:
+                if arbol_resultado is None:
+                    arbol_resultado=BinTree(-arbol.get_root())
+                arbol_resultado.set_left(distribucio_trets_aux(arbol.get_left()))
+            if distribucio_trets_aux(arbol.get_right()) is not None:
+                if arbol_resultado is None:
+                    arbol_resultado=BinTree(-arbol.get_root())
+                arbol_resultado.set_right(distribucio_trets_aux(arbol.get_right()))
+            return arbol_resultado
+        
+        arbol_resultado=distribucio_trets_aux(self.__conjunt_individus.get_arbre())
+        if arbol_resultado is None:
+            print(f"\nerror")    
+        else:
+            cadena=arbol_resultado.inorder()
+            cadena_print=' '.join(str(elemento) for elemento in cadena)
+            print(f"\n{cadena_print}")
 
-        if self.get_right().te_tret(tret)==0 and self.get_right().leaf():
-            self.poda_subarbre(self.get_right())
 
-        arb_aux=BinTree(self.get_root(), self.arbre.get_left().distribucio_trets(tret), self.arbre.get_right().distribucio_trets(tret))
-        return arb_aux
+
+           
 
 
     def afegir_tret(self,nom_tret,numero_individu):

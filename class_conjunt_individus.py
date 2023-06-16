@@ -19,7 +19,7 @@ class conjunt_individus:
         self.__numero_individus = numero_individus
         self.__numero_cromosomes = numero_cromosomas
         self.__individus = []
-        self.arbre = self.llegeix_bintree_int(marca)
+        self.__arbre = self.llegeix_bintree_int(marca)
         
         for i in range(1, self.__numero_individus+1):
             self.__inicialitza_individus(i, read(str))
@@ -34,6 +34,8 @@ class conjunt_individus:
         else:
             return BinTree()
 
+    def get_arbre(self):
+        return self.__arbre
 
     def distribucio_inorder(self, arbre, tret):
     
