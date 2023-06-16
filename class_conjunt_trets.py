@@ -17,7 +17,8 @@ Subelement= namedtuple("Subelement", ["interseccio", "individus"])
 
 class conjunt_trets:
     
-    def __init__(self):
+    def __init__(self,conj):
+        self.__conjunt_individus=conj
         self.__M = 100
         self.__taula = self.__M * [None] 
         for i in range(self.__M):
@@ -83,25 +84,26 @@ class conjunt_trets:
         
             elem = self.__taula[h][p]
             
-            conjunt_individus().afegir_tret(nom_tret,numero_individu)
+            self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
 
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
 
-            cromosomes_nou_element=conjunt_individus().get_individu_by_id(numero_individu).get_parell_cromosomes()
+            cromosomes_nou_element=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
 
-            nova_interseccio=parell_cromosomes.interseccion(interseccio_original,cromosomes_nou_element)
+            nova_interseccio=interseccio_original.interseccio(cromosomes_nou_element)
 
-            elem2.individus.append(conjunt_individus().get_individu_by_id(numero_individu))
+            elem2.individus.append(self.__conjunt_individus.get_individu_by_id(numero_individu))
 
             elem2._replace(interseccio=nova_interseccio)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
-            conjunt_individus().afegir_tret(nom_tret,numero_individu)
+            print(nom_tret,numero_individu)
 
-            cromosomas=conjunt_individus().get_individu_by_id(numero_individu).get_parell_cromosomes()
+            self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
+            cromosomas=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
             
-            info=Subelement(cromosomas,[conjunt_individus().get_individu_by_id(numero_individu)])
+            info=Subelement(cromosomas,[self.__conjunt_individus.get_individu_by_id(numero_individu)])
 
             self.__taula[h].append(Element(nom_tret, info))
             self.__n += 1
@@ -118,11 +120,12 @@ class conjunt_trets:
         """
         h = hash(tret) % len(self.__taula)
         p = self.__posicio(tret, h)
-        element=self.__taula[h][p].info_tret
-        individuos= element.individus
+        
         tetret=False
         i=0
         if p != None:
+            element=self.__taula[h][p].info_tret
+            individuos= element.individus
             while i < len(individuos):
                 if individuos[i].get_id_by_individu() == numero_individu:
                     tetret=True
@@ -130,18 +133,18 @@ class conjunt_trets:
                     break
                 i+=1
             if len(individuos)==0 : 
-                conjunt_individus().treure_tret(tret,numero_individu)
+                self.__conjunt_individus.treure_tret(tret,numero_individu)
   
                 self.__taula[h][p] = self.__taula[h][-1]
                 self.__taula[h].pop()
                 self.__n -= 1
             
             elif tetret:
-                conjunt_individus().treure_tret(tret,numero_individu)
-                element._replace(interseccio=conjunt_individus().get_individu_by_id(individuos[0]).get_parell_cromosomes())
+                self.__conjunt_individus.treure_tret(tret,numero_individu)
+                element._replace(interseccio=self.__conjunt_individus.get_individu_by_id(individuos[0]).get_parell_cromosomes())
                 for i in individuos:
-                    cromosomas=conjunt_individus().get_individu_by_id(i).get_parell_cromosomes()
-                    intersection= parell_cromosomes.interseccion(element.interseccio,cromosomas)
+                    cromosomas=self.__conjunt_individus.get_individu_by_id(i).get_parell_cromosomes()
+                    intersection= parell_cromosomes.interseccio(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)    
         else:
                 return 'error'

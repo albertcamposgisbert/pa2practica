@@ -13,12 +13,16 @@ comanda = read()
 
 while comanda != "fi":
     
-    print(comanda)
+    print(comanda, end=' ')
 
     if comanda == "experiment":
         #Must generate an instance of "conjunt trets" and "conjunt d'individus"
-        conjunt_individus_instance = conjunt_individus()
-        conjunt_trets_instance= conjunt_trets()
+        num_individus = read(int) # Nombre d'individus
+        num_cromosomas = read(int) # Nombre de gens de cada cromosoma
+        print(f"{num_individus} {num_cromosomas}")
+        
+        conjunt_individus_instance = conjunt_individus(num_individus, num_cromosomas)
+        conjunt_trets_instance= conjunt_trets(conjunt_individus_instance)
 
         
     elif comanda == "consulta_individu":
@@ -44,14 +48,16 @@ while comanda != "fi":
         tret = read(str)
         info= conjunt_trets_instance.consulta_tret(tret)
         if info is None:
+            print(f"{tret}")
             print("error")
         else:
             print(f"{tret}")
+            print(f"{tret}")
             print(f"{info[0][0]}")
             print(f"{info[0][1]}")
-            print("individuos:")
             for i in info[1]:
                 print(i.get_id_by_individu(),end='')
+            print()
             
 
     elif comanda == "distribució_tret":
