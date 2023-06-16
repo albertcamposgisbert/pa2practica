@@ -19,7 +19,8 @@ while comanda != "fi":
 
     if comanda == "experiment":
         #Must generate an instance of "conjunt trets" and "conjunt d'individus"
-        experiment = experiment()
+        conjunt_individus()
+        conjunt_trets()
         
     elif comanda == "consulta_individu":
         individu_id = read(int)
