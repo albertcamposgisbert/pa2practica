@@ -38,7 +38,6 @@ class conjunt_individus:
         return self.__arbre
 
     def distribucio_inorder(self, arbre, tret):
-    
         if not arbre.get_root()!=None:
             pass
         else:
