@@ -44,7 +44,7 @@ while comanda != "fi":
         
         tret = read(str)
         inter,individ= conjunt_trets.consulta_tret(tret)
-        print(f"consulta tret {tret}")
+        print(f"consulta tret {tret}",f"tiene intersección{inter} y lo padecen los individuos {individ}")
         # Llamar función que muestre el id del tret, los cromosomas, i los individuos involucrados (quizás __str__ de clase tret)
         
 
@@ -54,3 +54,4 @@ while comanda != "fi":
     comanda = read()
 
         
+
