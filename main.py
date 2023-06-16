@@ -22,7 +22,7 @@ while comanda != "fi":
         print(f"{num_individus} {num_cromosomas}")
         
         conjunt_individus_instance = conjunt_individus(num_individus, num_cromosomas)
-        conjunt_trets_instance= conjunt_trets()
+        conjunt_trets_instance= conjunt_trets(conjunt_individus_instance)
 
         
     elif comanda == "consulta_individu":
