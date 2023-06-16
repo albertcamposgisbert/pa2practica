@@ -81,20 +81,20 @@ class conjunt_trets:
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
 
-            cromosomes_nou_element=conjunt_individus.consulta_individu(numero_individu).get_parell_cromosomes()
+            cromosomes_nou_element=conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
 
             nova_interseccio=parell_cromosomes.interseccion(interseccio_original,cromosomes_nou_element)
 
-            elem2.individus.append(conjunt_individus.consulta_individu(numero_individu))
+            elem2.individus.append(conjunt_individus.get_individu_by_id(numero_individu))
 
             elem2._replace(interseccio=nova_interseccio)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
             conjunt_individus.afegir_tret(nom_tret,numero_individu)
 
-            cromosomas=conjunt_individus.consulta_individu(numero_individu).get_parell_cromosomes()
+            cromosomas=conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
             
-            info=Subelement(cromosomas,[conjunt_individus.consulta_individu(numero_individu)])
+            info=Subelement(cromosomas,[conjunt_individus.get_individu_by_id(numero_individu)])
 
             self.__taula[h].append(Element(nom_tret, info))
             self.__n += 1
@@ -131,9 +131,9 @@ class conjunt_trets:
             
             elif tetret:
                 conjunt_individus.treure_tret(tret,numero_individu)
-                element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]).get_parell_cromosomes())
+                element._replace(interseccio=conjunt_individus.get_individu_by_id(individuos[0]).get_parell_cromosomes())
                 for i in individuos:
-                    cromosomas=conjunt_individus.consulta_individu(i).get_parell_cromosomes()
+                    cromosomas=conjunt_individus.get_individu_by_id(i).get_parell_cromosomes()
                     intersection= parell_cromosomes.interseccion(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)    
         else:
