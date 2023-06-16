@@ -49,11 +49,11 @@ class conjunt_individus:
     
     def afegir_tret(self, tret, individu_id):
         # Asociar "tret" a un individuo concreto de la lista indexando en ella
-        self.get_individu(individu_id).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
+        self.get_individu_by_id(individu_id).afegir_tret(tret) # Utiliza "afegir_tret" de la clase individu
         
     def treure_tret(self, tret, individu_id):
         # Quitar "tret" a un individuo concreto de la lista indexando en ella
-        self.get_individu(individu_id).treure_tret(tret)
+        self.get_individu_by_id(individu_id).treure_tret(tret)
         
     def get_individu_by_id(self, individu_id):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
