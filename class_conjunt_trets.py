@@ -149,7 +149,7 @@ class conjunt_trets:
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
         h = int(hash(tret) % len(self.__taula))
-        p = int(self.__posicio(tret, h))
+        p = self.__posicio(tret, h)
         element=self.__taula[h][p].info_tret
         if p is not None:
             interseccio=element.interseccio
