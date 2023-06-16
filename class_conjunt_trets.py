@@ -37,16 +37,20 @@ class conjunt_trets:
         else:
                 return None
     def distribucio_trets(self, tret):
-        arb_aux=BinTree(self.get_root(), self.get_left(), self.get_right())
-            
-        if arb_aux.get_left().te_tret(tret)==0 and arb_aux.get_left().leaf():
-            arb_aux.poda_subarbre(arb_aux.get_left)
-        if arb_aux.get_right().te_tret(tret)==0 and arb_aux.get_right().leaf:
-            arb_aux.poda_subarbre(arb_aux.right)
-        arb_aux.get_left.distribucio_trets(tret)
-        arb_aux.get_rightdistribucio_trets(tret)
-        result = arb_aux.distribucio_inorder(tret)
-        return result 
+        
+        def distribucio_trets_aux(arb ,tret_aux):  
+            if arb.get_left().te_tret(tret_aux)==0 and arb.get_left().leaf():
+                arb.poda_subarbre(arb.get_left())
+
+            if arb.get_right().te_tret(tret_aux)==0 and arb.get_right().leaf():
+                arb.poda_subarbre(arb.get_right())
+
+            arb_aux=BinTree(self.get_root(), distribucio_trets_aux(arb_aux.get_left(), tret), distribucio_trets_aux(arb_aux.get_right(), tret))
+            return arb_aux
+        res = distribucio_trets_aux(self, tret)
+        return res.distribucio_inorder(tret)
+        
+    
     def elements(self):
         resultat = []
         for ll in self.__taula:
