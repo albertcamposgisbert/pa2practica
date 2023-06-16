@@ -46,7 +46,7 @@ while comanda != "fi":
         tret = read(str)
         info= conjunt_trets_instance.consulta_tret(tret)
         if info is None:
-            return 'error'
+            print("error")
         else:
             print(f"{tret}")
             print(f"{info[0][0]}")
