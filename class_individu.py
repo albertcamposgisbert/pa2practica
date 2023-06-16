@@ -19,7 +19,7 @@ class individu():
     def __str__(self) -> str:
         self.__ordena_trets_alfabeticament()
         elements_trets = "\n".join(str(elem) for elem in self.__trets)
-        return f"{self.__parell_cromosomes}\n{elements_trets}" # Printar parell de cromosomes a partir de __str__, y trets
+        return f"{self.__parell_cromosomes}\n{elements_trets}" if elements_trets else f"{self.__parell_cromosomes}" # Printar parell de cromosomes a partir de __str__, y trets
     
     def __ordena_trets_alfabeticament(self):
         llista_ordenada = sorted(self.__trets)
