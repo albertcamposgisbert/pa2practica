@@ -11,40 +11,31 @@ experiment 5 8
 
 4
 
-consulta_tret 
+
 
 	qwerty_12
 distribucio_tret qwerty_12
-afegir_tret qwerty_12 3
-consulta_tret qwerty_12
+
+
 distribucio_tret qwerty_12
-treure_tret 
 
 
-	qwerty_12 
-	
-	
-  2
-afegir_tret qwerty_12 3
 
-treure_tret qwerty_12 3
 
-consulta_tret qwerty_12
-afegir_tret asdf_34 5
 distribucio_tret asdf_34
-consulta_tret asdf_34
-afegir_tret asdf_34 4
+
+
 distribucio_tret asdf_34
-consulta_tret asdf_34
-afegir_tret asdf_34 2
+
+
 distribucio_tret asdf_34
-consulta_tret asdf_34
-afegir_tret zxcv_13 1
+
+
 distribucio_tret zxcv_13
-afegir_tret asdf_34 3
+
 distribucio_tret asdf_34
 
-afegir_tret asdf_31 3
+
 
 
 	experiment 3 3
@@ -53,18 +44,11 @@ afegir_tret asdf_31 3
 111000
 111111
 
-consulta_tret qwert1
-afegir_tret qwert1 1
-consulta_tret qwert1
-afegir_tret qwert1 2
-consulta_tret qwert1
-afegir_tret qwert1 3
-consulta_tret qwert1
-treure_tret qwert1 3
-consulta_tret qwert1
-treure_tret qwert1 2
-consulta_tret qwert1
-treure_tret qwert1 1
+
+
+
+
+
 
 
 
@@ -74,9 +58,9 @@ experiment 3 3
 111111
 111111
 
-afegir_tret qwert1 1
 
-consulta_tret qwert1
+
+
 distribucio_tret qwert1
 distribucio_tret asdf
 
