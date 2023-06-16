@@ -11,6 +11,7 @@ l'estructura de dades set, que Python ens proporciona
 from class_conjunt_individus import *
 from class_parell_cromosomes import *
 from collections import namedtuple
+from bintree import BinTree
 
 Element = namedtuple("Element", ["interseccio", "individus"])
 
@@ -21,20 +22,18 @@ class conjunt_trets:
         self.__conjunt_individus=conj
         self.__trets={}
 
-    def distribucio_trets_aux(self ,tret_aux):  
-                if self.get_left().te_tret(tret_aux)==0 and self.get_left().leaf():
-                    self.poda_subarbre(self.get_left())
-
-                if self.get_right().te_tret(tret_aux)==0 and self.get_right().leaf():
-                    self.poda_subarbre(self.get_right())
-
-                arb_aux=BinTree(self.get_root(), self.distribucio_trets_aux(arb_aux.get_left(), tret_aux), self.distribucio_trets_aux(arb_aux.get_right(), tret_aux))
-                return arb_aux
     
     def distribucio_trets(self, tret):
-        
-        res = self.distribucio_trets_aux(tret)
-        return res.distribucio_inorder(tret)
+         
+        if self.arbre.get_left().te_tret(tret)==0 and self.arbre.get_left().leaf():
+            self.arbre.poda_subarbre(self.arbre.get_left())
+
+        if self.get_right().te_tret(tret)==0 and self.get_right().leaf():
+            self.poda_subarbre(self.get_right())
+
+        arb_aux=BinTree(self.get_root(), self.arbre.get_left().distribucio_trets(tret), self.arbre.get_right().distribucio_trets(tret))
+        return arb_aux
+
 
     def afegir_tret(self,nom_tret,numero_individu):
         """

@@ -33,21 +33,23 @@ class conjunt_individus:
             return BinTree(x,l,r)
         else:
             return BinTree()
-        
-    def distribucio_inorder(self, tret):
+
+
+    def distribucio_inorder(self, arbre, tret):
     
-        if not self.get_root()!=None:
+        if not arbre.get_root()!=None:
             pass
         else:
-            if not self.te_tret(tret):
-                self.set_root(self.get_root*-1)
-            che=BinTree(self.get_root, self.get_left.distribucio_inorder(tret), self.get_right.distribucio_inorder(tret))
+            if not arbre.get_root().te_tret(tret):
+                arbre.set_root(arbre.get_root*-1)
+            che=BinTree(arbre.get_root, arbre.get_left.distribucio_inorder(tret), arbre.get_right.distribucio_inorder(tret))
             
-        return che.inorder
+        return che.inorder()
         
     def __inicialitza_individus(self, id_individu, cromosomes):
         # Instancia un individuo de la clase individuo, y lo añade a "conjunt_individus"
         self.__individus.append(individu(id_individu, cromosomes))
+
     
     def afegir_tret(self, tret, individu_id):
         # Asociar "tret" a un individuo concreto de la lista indexando en ella
