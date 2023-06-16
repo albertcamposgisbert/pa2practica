@@ -150,8 +150,8 @@ class conjunt_trets:
         """
         h = int(hash(tret) % len(self.__taula))
         p = self.__posicio(tret, h)
-        element=self.__taula[h][p].info_tret
         if p is not None:
+            element=self.__taula[h][p].info_tret
             interseccio=element.interseccio
             individus=element.individus
             return (interseccio.get_cromosomas(),individus)
