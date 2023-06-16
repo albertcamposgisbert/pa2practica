@@ -147,6 +147,6 @@ class conjunt_trets:
         if p is not None:
             interseccio=element.interseccio
             individus=element.individus
-            return interseccio.get_cromosomas(),individus
+            return (interseccio.get_cromosomas(),individus)
         else:
-            return 'error'
+            return None
