@@ -8,7 +8,6 @@ fan falta (els mètodes públics) és quelcom que heu de decidir vosaltres.
 class parell_cromosomes:
     
     def __init__(self, cromosomes = "") -> None:
-        self.__cromosomes = cromosomes
         self.__mid=int(len(cromosomes)/2)
         self.__cromosoma1 = cromosomes[self.__mid:]
         self.__cromosoma2 = cromosomes[:self.__mid]
@@ -19,10 +18,10 @@ class parell_cromosomes:
     def get_cromosomas(self):
             
             return (self.__cromosoma1,self.__cromosoma2)	
-    def interseccio(self, parell_cromosomes):
+    def interseccio(self,e1):
         i=0
         a1,b1=list(self.__cromosoma1[0]),list(self.__cromosoma2[1])
-        a2,b2=list(self.__cromosoma1[0]),list(self.__cromosoma2[1])
+        a2,b2=list(e1.__cromosoma1[0]),list(e1.__cromosoma2[1])
         a1_a2=[]
         b1_b2=[]
         m=len(a1)
@@ -47,4 +46,5 @@ class parell_cromosomes:
         inter=(p1,p2)
         a=inter[0]
         a+=inter[1]    
-        return parell_cromosomes(a)
+        cl= parell_cromosomes(a)
+        return cl

@@ -87,7 +87,7 @@ class conjunt_trets:
 
             cromosomes_nou_element=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
 
-            nova_interseccio=parell_cromosomes.interseccio(interseccio_original,cromosomes_nou_element)
+            nova_interseccio=interseccio_original.interseccio(cromosomes_nou_element)
 
             elem2.individus.append(self.__conjunt_individus.get_individu_by_id(numero_individu))
 
