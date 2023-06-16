@@ -52,7 +52,7 @@ class conjunt_trets:
         else:
             cadena=arbol_resultado.inorder()
             cadena_print=' '.join(str(elemento) for elemento in cadena)
-            print(f"\n{cadena_print}")
+            print(f"{tret}\n{cadena_print}")
 
 
 
@@ -64,32 +64,32 @@ class conjunt_trets:
         el diccionari, la informació és modificada.
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
-        m=self.__conjunt_individus.get_num_individuos()
-        if numero_individu>m or numero_individu<1:
+        m = self.__conjunt_individus.get_num_individuos()
+        if numero_individu > m or numero_individu < 1:
             print('error')
+            
         else:
+
             if nom_tret in self.__trets: #Això vol dir que el tret ja el teniem
                 elem=self.__trets[nom_tret]
                 for i in elem.individus:
                     if i.get_id_by_individu() == numero_individu:
                         print('error')
                         return 0
+                    
                 self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
-           
                 interseccio_original=elem.interseccio
-
                 cromosomes_nou_element=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
                 nova_interseccio=interseccio_original.interseccio(cromosomes_nou_element)
                 elem.individus.append(self.__conjunt_individus.get_individu_by_id(numero_individu))
-
                 self.__trets[nom_tret]=Element(nova_interseccio,elem.individus)
+                
             else:
 
                 self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
-
                 cromosomas=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
-                
                 self.__trets[nom_tret]=Element(cromosomas,[self.__conjunt_individus.get_individu_by_id(numero_individu)])
+                
     def treure_tret(self, tret, numero_individu):
         """
         Elimina la parella (clau, valor) del diccionari. Si la clau no pertany al
