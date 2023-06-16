@@ -40,11 +40,12 @@ distribucio_tret diabetis_1
 
 treure_tret vitiligo 3
 
-consultar vitiligo
+consultar vitiligo 
 
 distribucio_tret vitiligo
 
 afegir_tret soriasis 2
+
 
 afegir_tret diabetis_1 5
 
@@ -54,6 +55,9 @@ treure_tret soriasis 4
 
 afegir_tret soriasis 3
 distribucio_tret soriasis
+
+afegir_tret soriasis 8
+
 
 fi
 

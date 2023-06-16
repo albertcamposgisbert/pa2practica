@@ -62,12 +62,13 @@ class conjunt_individus:
                 individu_in = True
                # cromosomas=individu.get_parell_cromosomes().get_cromosomas()
                 return individu
-                
-    
     def get_numero_cromosomes(self):
         # Devuelve el total de cromosomas
         return self.__numero_cromosomes
-    
+
+ 
+    def get_num_individuos(self):
+            return self.__numero_individus    
     def consulta_individu(self, individu_id):
         individu = self.get_individu_by_id(individu_id)
         if individu:

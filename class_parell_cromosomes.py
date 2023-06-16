@@ -20,8 +20,9 @@ class parell_cromosomes:
             return (self.__cromosoma1,self.__cromosoma2)	
     def interseccio(self,e1):
         i=0
-        a1,b1=list(self.__cromosoma1[0]),list(self.__cromosoma2[1])
-        a2,b2=list(e1.__cromosoma1[0]),list(e1.__cromosoma2[1])
+        a1,b1=list(self.__cromosoma1),list(self.__cromosoma2)
+        a2,b2=list(e1.__cromosoma1),list(e1.__cromosoma2)
+
         a1_a2=[]
         b1_b2=[]
         m=len(a1)
@@ -42,9 +43,6 @@ class parell_cromosomes:
             p1+=a1_a2[i]
             p2+=b1_b2[i]
             i+=1
-        #inter=(a1_a2,b1_b2)
-        inter=(p1,p2)
-        a=inter[0]
-        a+=inter[1]    
+        a=p1+p2
         cl= parell_cromosomes(a)
         return cl

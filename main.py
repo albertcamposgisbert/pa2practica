@@ -58,11 +58,11 @@ while comanda != "fi":
         else:
             print(f"{tret}")
             print(f"{tret}")
-            print(f"{info[0][0]}")
-            print(f"{info[0][1]}")
+            print(info[0][0])
+            print(info[0][1])
             for i in info[1]:
-                print(i.get_id_by_individu(),end=' ')
-            print()
+                print(i.get_id_by_individu())
+
             
 
     elif comanda == "distribució_tret":
