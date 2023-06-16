@@ -69,7 +69,6 @@ while comanda != "fi":
         pass
     
     comanda = read()
-    print()
 
         
 
