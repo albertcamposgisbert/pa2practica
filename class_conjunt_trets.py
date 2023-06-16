@@ -37,11 +37,11 @@ class conjunt_trets:
         arb_aux=BinTree(self.get_root(), self.get_left(), self.get_right())
             
         if arb_aux.get_left().te_tret(tret)==0 and arb_aux.get_left().leaf():
-            poda_subarbre(arb_aux.get_left)
+            arb_aux.poda_subarbre(arb_aux.get_left)
         if arb_aux.get_right().te_tret(tret)==0 and arb_aux.get_right().leaf:
-            poda_subarbre(arb_aux.right)
-        distribucio_trets(arb_aux.get_left)
-        distribucio_trets(arb_aux.get_right)
+            arb_aux.poda_subarbre(arb_aux.right)
+        arb_aux.get_left.distribucio_trets(tret)
+        arb_aux.get_rightdistribucio_trets(tret)
         result = arb_aux.distribucio_inorder(tret)
         return result 
     def elements(self):
@@ -85,12 +85,12 @@ class conjunt_trets:
             elem2.individus.append(numero_individu)
 
             elem2._replace(interseccio=nova_interseccio)
-            class_conjunt_individus.afegir_tret(nom_tret,numero_individu)
+            conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
             cromosomas=conjunt_individus.consulta_individu(numero_individu)
             info=Subelement(cromosomas,[numero_individu])
-            class_conjunt_individus.afegir_tret(nom_tret,numero_individu)
+            conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h].append(Element(nom_tret, info))
             self.__n += 1
         alfa = self.__n / self.__M
@@ -123,7 +123,7 @@ class conjunt_trets:
                 self.__n -= 1
             
             elif tetret:
-                class_conjunt_individus.treure_tret(ret,numero_individu)
+                conjunt_individus.treure_tret(tret,numero_individu)
                 element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
                 for i in individuos:
                     cromosomas=conjunt_individus.consulta_individu(i)
@@ -147,32 +147,3 @@ class conjunt_trets:
             return interseccio,individus
         else:
             return 'error'
-"""
-    def interseccion(self,el1,el2):
-        i=0
-        a1,b1=list(el1[0]),list(el1[1])
-        a2,b2=list(el2[0]),list(el2[1])
-        a1_a2=[]
-        b1_b2=[]
-        m=len(a1)
-        #p1=''
-        #p2=''
-        while i<m:
-            if a1[i]==a2[i]:
-                a1_a2.append(a1[i])
-            else:
-                a1_a2.append('-')
-            if b1[i]==b2[i]:
-                b1_b2.append(b1[i])
-            else:
-                b1_b2.append('-')
-            if a1_a2[i]=='-' or b1_b2[i]=='-':
-                a1_a2[i]='-'
-                b1_b2[i]='-'
-            #p1+=a1_a2[i]
-            #p2+=b1_b2[i]
-            i+=1
-        inter=(a1_a2,b1_b2)
-        #inter=(p1,p2)    
-        return inter
- """   

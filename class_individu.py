@@ -11,9 +11,9 @@ from class_parell_cromosomes import *
 
 class individu():
     
-    def __init__(self, individu_id, parell_cromosomes):
+    def __init__(self, individu_id, parell):
         self.__individu_id = individu_id
-        self.__parell_cromosomes = parell_cromosomes(parell_cromosomes)
+        self.__parell_cromosomes = parell_cromosomes(parell)
         self.__trets = set()
     
     def __str__(self) -> str:

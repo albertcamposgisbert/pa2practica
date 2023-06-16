@@ -38,8 +38,8 @@ class conjunt_individus:
 		
         if not self.te_tret(tret):
             self.set_root(self.get_root*-1)
-        distribucio_inorder(self.right, tret)
-        distribucio_inorder(self.left, tret)
+        self.get_right.distribucio_inorder(tret)
+        self.get_left.distribucio_inorder(tret)
 		
         return self.inorder
         

@@ -5,12 +5,10 @@ from easyinput import read
 #Clases
 from class_conjunt_individus import *
 from class_conjunt_trets import *
-from class_experiment import *
 
 sys.stdin = open(sys.argv[1], 'r')
 comanda = read()
 
-conjunt_trets=conjunt_trets()
 
 
 while comanda != "fi":
@@ -19,8 +17,9 @@ while comanda != "fi":
 
     if comanda == "experiment":
         #Must generate an instance of "conjunt trets" and "conjunt d'individus"
-        conjunt_individus()
-        conjunt_trets()
+        conjunt_indivudus = conjunt_individus()
+        conjunt_trets_instance= conjunt_trets()
+
         
     elif comanda == "consulta_individu":
         individu_id = read(int)
@@ -44,7 +43,7 @@ while comanda != "fi":
     elif comanda == "consulta_tret":  #Si que tiene que imprimir el main porque lo que la clase le devolverá será dos cosas, la intersección y los individuos que la tienen
         
         tret = read(str)
-        inter,individ= conjunt_trets.consulta(tret)
+        inter,individ= conjunt_trets.consulta_tret(tret)
         print(f"consulta tret {tret}")
         # Llamar función que muestre el id del tret, los cromosomas, i los individuos involucrados (quizás __str__ de clase tret)
         

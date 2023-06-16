@@ -9,15 +9,15 @@ class parell_cromosomes:
     
     def __init__(self, cromosomes = "") -> None:
         self.__cromosomes = cromosomes
-        self.__mid=len(cromosomes)/2
-        self.__cromosoma1 = cromosomes[mid:]
-        self.__cromosoma2 = cromosomes[:mid]
+        self.__mid=int(len(cromosomes)/2)
+        self.__cromosoma1 = cromosomes[self.__mid:]
+        self.__cromosoma2 = cromosomes[:self.__mid]
     def __str__(self):
         # str method must return "parell de cromosomes" in the data type in which they are contained.
         
         return f"{self.__cromosoma1}\n{self.__cromosoma2}"
-    
-	def get_cromosomas(self):
+    def get_cromosomas(self):
+            
             return (str(self.__cromosoma1),str(self.__cromosoma2))	
     def interseccio(self, parell_cromosomes):
         i=0
