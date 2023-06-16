@@ -21,18 +21,20 @@ class conjunt_trets:
         self.__conjunt_individus=conj
         self.__trets={}
 
-    def distribucio_trets(self, tret):
-        def distribucio_trets_aux(arb ,tret_aux):  
-                if arb.get_left().te_tret(tret_aux)==0 and arb.get_left().leaf():
-                    arb.poda_subarbre(arb.get_left())
+    def distribucio_trets_aux(self ,tret_aux):  
+                if self.get_left().te_tret(tret_aux)==0 and self.get_left().leaf():
+                    self.poda_subarbre(self.get_left())
 
-                if arb.get_right().te_tret(tret_aux)==0 and arb.get_right().leaf():
-                    arb.poda_subarbre(arb.get_right())
+                if self.get_right().te_tret(tret_aux)==0 and self.get_right().leaf():
+                    self.poda_subarbre(self.get_right())
 
-                arb_aux=BinTree(arb.get_root(), arb.distribucio_trets_aux(arb_aux.get_left(), tret_aux), arb.distribucio_trets_aux(arb_aux.get_right(), tret_aux))
+                arb_aux=BinTree(self.get_root(), self.distribucio_trets_aux(arb_aux.get_left(), tret_aux), self.distribucio_trets_aux(arb_aux.get_right(), tret_aux))
                 return arb_aux
+    
+    def distribucio_trets(self, tret):
+        
         res = self.distribucio_trets_aux(tret)
-        print (f"{res.distribucio_inorder(tret)}")
+        return res.distribucio_inorder(tret)
 
     def afegir_tret(self,nom_tret,numero_individu):
         """
