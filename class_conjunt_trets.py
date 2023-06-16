@@ -29,16 +29,22 @@ class conjunt_trets:
             if arbol.empty():
                 return None
             arbol_resultado= None
-            if self.__conjunt_individus.get_individu_by_id(arbol.get_root()).te_tret(tret):
-                arbol_resultado=BinTree(arbol.get_root())
-            if distribucio_trets_aux(arbol.get_left()) is not None:
+            individu_id = arbol.get_root()
+            
+            if self.__conjunt_individus.get_individu_by_id(individu_id).te_tret(tret):
+                arbol_resultado=BinTree(individu_id)
+
+            left_tree = distribucio_trets_aux(arbol.get_left())
+            if left_tree is not None:
                 if arbol_resultado is None:
-                    arbol_resultado=BinTree(-arbol.get_root())
-                arbol_resultado.set_left(distribucio_trets_aux(arbol.get_left()))
-            if distribucio_trets_aux(arbol.get_right()) is not None:
+                    arbol_resultado=BinTree(-individu_id)
+                arbol_resultado.set_left(left_tree)
+
+            right_tree=distribucio_trets_aux(arbol.get_right())
+            if right_tree is not None:
                 if arbol_resultado is None:
-                    arbol_resultado=BinTree(-arbol.get_root())
-                arbol_resultado.set_right(distribucio_trets_aux(arbol.get_right()))
+                    arbol_resultado=BinTree(-individu_id)
+                arbol_resultado.set_right(right_tree)
             return arbol_resultado
         
         arbol_resultado=distribucio_trets_aux(self.__conjunt_individus.get_arbre())
@@ -52,7 +58,6 @@ class conjunt_trets:
 
 
            
-
 
     def afegir_tret(self,nom_tret,numero_individu):
         """
