@@ -87,7 +87,7 @@ class conjunt_trets:
 
             cromosomes_nou_element=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
 
-            nova_interseccio=parell_cromosomes.interseccion(interseccio_original,cromosomes_nou_element)
+            nova_interseccio=parell_cromosomes.interseccio(interseccio_original,cromosomes_nou_element)
 
             elem2.individus.append(self.__conjunt_individus.get_individu_by_id(numero_individu))
 
@@ -140,7 +140,7 @@ class conjunt_trets:
                 element._replace(interseccio=self.__conjunt_individus.get_individu_by_id(individuos[0]).get_parell_cromosomes())
                 for i in individuos:
                     cromosomas=self.__conjunt_individus.get_individu_by_id(i).get_parell_cromosomes()
-                    intersection= parell_cromosomes.interseccion(element.interseccio,cromosomas)
+                    intersection= parell_cromosomes.interseccio(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)    
         else:
                 return 'error'

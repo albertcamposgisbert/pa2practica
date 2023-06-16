@@ -26,8 +26,8 @@ class parell_cromosomes:
         a1_a2=[]
         b1_b2=[]
         m=len(a1)
-        #p1=''
-        #p2=''
+        p1=''
+        p2=''
         while i<m:
             if a1[i]==a2[i]:
                 a1_a2.append(a1[i])
