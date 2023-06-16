@@ -30,7 +30,6 @@ while comanda != "fi":
         #Must add tret into trets instance
         #Modificar (Incluir en trets o conjunt trets)
         tret, individu_id = read(str), read(int)
-        conjunt_individus_instance.afegir_tret(tret, individu_id)
         conjunt_trets_instance.afegir_tret(tret, individu_id) #Falta aclarar
         
         pass
@@ -39,14 +38,13 @@ while comanda != "fi":
         #Must remove tret from trets instance
         tret, individu_id = read(str), read(int)
         conjunt_trets_instance.treure_tret(tret, individu_id)
-        conjunt_individus_instance.treure(tret, individu_id) #Falta aclarar
 
     elif comanda == "consulta_tret":  #Si que tiene que imprimir el main porque lo que la clase le devolverá será dos cosas, la intersección y los individuos que la tienen
         
         tret = read(str)
         info= conjunt_trets_instance.consulta_tret(tret)
         if info is None:
-            return 'error'
+            print("error")
         else:
             print(f"{tret}")
             print(f"{info[0][0]}")

@@ -55,7 +55,7 @@ class conjunt_individus:
         # Quitar "tret" a un individuo concreto de la lista indexando en ella
         self.get_individu(individu_id).treure_tret(tret)
         
-    def consulta_individu(self, individu_id):
+    def get_individu_by_id(self, individu_id):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
         individu_in = False
         for individu in self.__individus:
@@ -70,6 +70,11 @@ class conjunt_individus:
     def get_numero_cromosomes(self):
         # Devuelve el total de cromosomas
         return self.__numero_cromosomes
+    
+    def consulta_individu(self, individu_id):
+        individu = self.get_individu_by_id(individu_id)
+        print(individu)
+        
 
             
             
