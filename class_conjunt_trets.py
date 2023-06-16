@@ -41,7 +41,9 @@ class conjunt_trets:
             elem=self.__trets[nom_tret]
             a=elem.individus
             for i in a:
-                assert i.get_id_by_individu != numero_individu,'error'
+                if i.get_id_by_individu() != numero_individu:
+                    print('error')
+                    break
             self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
             interseccio_original=elem.interseccio
 
@@ -59,42 +61,47 @@ class conjunt_trets:
             self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
             cromosomas=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
             self.__trets[nom_tret]=Element(cromosomas,[self.__conjunt_individus.get_individu_by_id(numero_individu)])
-          
     def treure_tret(self, tret, numero_individu):
         """
         Elimina la parella (clau, valor) del diccionari. Si la clau no pertany al
         diccionari, res canvia.
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
-        assert tret in self.__trets,'error'
-        tetret=False
-        i=0
-        element=self.__trets[tret]
-        individuos= element.individus
-        while i < len(individuos):
-            if individuos[i].get_id_by_individu() == numero_individu:
-                tetret=True
-                individuos.pop(i)
-                break
-            i+=1
-
-        if len(individuos)==0 : 
-            self.__conjunt_individus.treure_tret(tret,numero_individu)
-            del self.__trets[tret]
+        if tret in (self.__trets):
             tetret=False
-        
-        elif tetret:
-            ind=individuos[0].get_parell_cromosomes()
-            element._replace(interseccio=ind.get_cromosomas())
-            self.__conjunt_individus.treure_tret(tret,numero_individu)
+            i=0
+            element=self.__trets[tret]
+            individuos= element.individus
 
-            for i in individuos:
-                cromosomas=i.get_parell_cromosomes()
-                intersection= parell_cromosomes.interseccio(element.interseccio,cromosomas)
-                element._replace(interseccio=intersection) 
-            self.__trets[tret]=element
-        if not(tetret):
-            return 'error'   
+            for a in individuos:
+                if a.get_id_by_individu() != numero_individu:
+                    print('error')
+                    break
+
+            while i < len(individuos):
+                if individuos[i].get_id_by_individu() == numero_individu:
+                    tetret=True
+                    individuos.pop(i)
+                    break
+                i+=1
+
+            if len(individuos)==0 : 
+                self.__conjunt_individus.treure_tret(tret,numero_individu)
+                del self.__trets[tret]
+                tetret=False
+            
+            elif tetret:
+                ind=individuos[0].get_parell_cromosomes()
+                element._replace(interseccio=ind.get_cromosomas())
+                self.__conjunt_individus.treure_tret(tret,numero_individu)
+
+                for i in individuos:
+                    cromosomas=i.get_parell_cromosomes()
+                    intersection= parell_cromosomes.interseccio(element.interseccio,cromosomas)
+                    element._replace(interseccio=intersection) 
+                self.__trets[tret]=element
+        else:
+            print('error')
         
                 
     def consulta_tret(self, tret):
