@@ -43,13 +43,16 @@ while comanda != "fi":
     elif comanda == "consulta_tret":  #Si que tiene que imprimir el main porque lo que la clase le devolverá será dos cosas, la intersección y los individuos que la tienen
         
         tret = read(str)
-        inter,individ= conjunt_trets.consulta_tret(tret)
-        print(f"consulta tret {tret}",f"tiene intersección{inter}")
-        print("individuos:")
-        for i in individ:
-            print(i.get_id_by_individu())
-        # Llamar función que muestre el id del tret, los cromosomas, i los individuos involucrados (quizás __str__ de clase tret)
-        
+        info= conjunt_trets.consulta_tret(tret)
+        if info is None:
+            return 'error'
+        else:
+            print(f"consulta tret {tret}",f"tiene intersección{info[0]}")
+            print("individuos:")
+            for i in info[1]:
+                print(i.get_id_by_individu())
+            # Llamar función que muestre el id del tret, los cromosomas, i los individuos involucrados (quizás __str__ de clase tret)
+            
 
     elif comanda == "distribució_tret":
         pass
