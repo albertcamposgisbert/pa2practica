@@ -32,7 +32,17 @@ class conjunt_trets:
             if l[i].nom_tret == nom_tret:
                 return i
         return None
-
+    def distribucio_trets(self, tret):
+        arb_aux=BinTree(self.get_root(), self.get_left(), self.get_right())
+            
+        if arb_aux.get_left().te_tret(tret)==0 and arb_aux.get_left().leaf():
+            poda_subarbre(arb_aux.get_left)
+        if arb_aux.get_right().te_tret(tret)==0 and arb_aux.get_right().leaf:
+            poda_subarbre(arb_aux.right)
+        distribucio_trets(arb_aux.get_left)
+        distribucio_trets(arb_aux.get_right)
+        result = arb_aux.distribucio_inorder(tret)
+        return result 
     def elements(self):
         resultat = []
         for ll in self.__taula:
@@ -115,9 +125,8 @@ class conjunt_trets:
                     cromosomas=conjunt_individus.consulta_individu(i)
                     intersection= self.interseccion(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)
-        else:
-
-                    
+        else:      
+            pass 
     def consulta_tret(self, tret):
         """
         retorna el valor associat a una clau, None si la clau no hi és
