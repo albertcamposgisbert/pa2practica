@@ -44,8 +44,9 @@ class conjunt_trets:
             elem=self.__trets[nom_tret]
             a=elem.individus
             for i in a:
-                if i.get_id_by_individu==numero_individu:
-                    return 'error'
+                if i.get_id_by_individu() != numero_individu:
+                    print('error')
+                    break
             self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
             interseccio_original=elem.interseccio
 
@@ -63,18 +64,23 @@ class conjunt_trets:
             self.__conjunt_individus.afegir_tret(nom_tret,numero_individu)
             cromosomas=self.__conjunt_individus.get_individu_by_id(numero_individu).get_parell_cromosomes()
             self.__trets[nom_tret]=Element(cromosomas,[self.__conjunt_individus.get_individu_by_id(numero_individu)])
-          
     def treure_tret(self, tret, numero_individu):
         """
         Elimina la parella (clau, valor) del diccionari. Si la clau no pertany al
         diccionari, res canvia.
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
-        tetret=False
-        i=0
-        element=self.__trets[tret]
-        individuos= element.individus
-        if tret in self.__trets:
+        if tret in (self.__trets):
+            tetret=False
+            i=0
+            element=self.__trets[tret]
+            individuos= element.individus
+
+            for a in individuos:
+                if a.get_id_by_individu() != numero_individu:
+                    print('error')
+                    break
+
             while i < len(individuos):
                 if individuos[i].get_id_by_individu() == numero_individu:
                     tetret=True
@@ -96,10 +102,10 @@ class conjunt_trets:
                     cromosomas=i.get_parell_cromosomes()
                     intersection= parell_cromosomes.interseccio(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection) 
-                self.__trets[tret]=element   
+                self.__trets[tret]=element
         else:
-            return 'error'
-
+            print('error')
+        
                 
     def consulta_tret(self, tret):
         """
