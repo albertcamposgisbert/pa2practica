@@ -149,9 +149,9 @@ class conjunt_trets:
         cas pitjor: Theta(n). cas mitjà: Theta(1+n/M).
         """
         h = int(hash(tret) % len(self.__taula))
-        p = int(self.__posicio(tret, h))
-        element=self.__taula[h][p].info_tret
+        p = self.__posicio(tret, h)
         if p is not None:
+            element=self.__taula[h][p].info_tret
             interseccio=element.interseccio
             individus=element.individus
             return (interseccio.get_cromosomas(),individus)
