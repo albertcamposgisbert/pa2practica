@@ -9,26 +9,19 @@ consulta_individu 1
 
 consulta_individu 2
 consulta_individu 3
-consulta_individu 
-
-
-
-4
+consulta_individu 4
 consulta_individu 5
-consulta_tret 
 
-	qwerty_12
-distribucio_tret qwerty_12
-afegir_tret qwerty_12 3
 consulta_tret qwerty_12
+
 distribucio_tret qwerty_12
-treure_tret 
 
+afegir_tret qwerty_12 3
 
-	qwerty_12 
-	
-	
-  2
+consulta_tret qwerty_12
+
+distribucio_tret qwerty_12
+treure_tret qwerty_12 2
 afegir_tret qwerty_12 3
 consulta_individu 3
 treure_tret qwerty_12 3
@@ -51,7 +44,7 @@ consulta_individu 3
 afegir_tret asdf_31 3
 consulta_individu 3
 
-	experiment 3 3
+experiment 3 3
 1 2 0 0 3 0 0
 111010
 111000
