@@ -14,10 +14,10 @@ decidir vosaltres.
 
 class conjunt_individus:
     
-    def __init__(self, marca = 0):
+    def __init__(self, numero_individus, numero_cromosomas, marca = 0):
         
-        self.__numero_individus = read(int) # Nombre d'individus
-        self.__numero_cromosomes = read(int) # Nombre de gens de cada cromosoma
+        self.__numero_individus = numero_individus
+        self.__numero_cromosomes = numero_cromosomas
         self.__individus = []
         self.arbre = self.llegeix_bintree_int(marca)
         

@@ -13,11 +13,14 @@ comanda = read()
 
 while comanda != "fi":
     
-    print(comanda)
+    print(comanda, end=' ')
 
     if comanda == "experiment":
         #Must generate an instance of "conjunt trets" and "conjunt d'individus"
-        conjunt_individus_instance = conjunt_individus()
+        num_individus = read(int) # Nombre d'individus
+        num_cromosomas = read(int) # Nombre de gens de cada cromosoma
+        print(f"{num_individus} {num_cromosomas}")
+        conjunt_individus_instance = conjunt_individus(num_individus, num_cromosomas)
         conjunt_trets_instance= conjunt_trets()
 
         
