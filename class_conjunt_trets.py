@@ -29,10 +29,13 @@ class conjunt_trets:
         d'elements de la posició h, o None si no el troba.
         """
         l = self.__taula[h]
-        for i in range(len(l)):
-            if l[i].nom_tret == nom_tret:
-                return i
-        return None
+        if len(l)>0:
+            for i in range(len(l)):
+                if l[i].nom_tret == nom_tret:
+                    return i
+            return None
+        else:
+                return None
     def distribucio_trets(self, tret):
         arb_aux=BinTree(self.get_root(), self.get_left(), self.get_right())
             
