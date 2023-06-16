@@ -114,11 +114,12 @@ class conjunt_trets:
         """
         h = hash(tret) % len(self.__taula)
         p = self.__posicio(tret, h)
-        element=self.__taula[h][p].info_tret
-        individuos= element.individus
+        
         tetret=False
         i=0
         if p != None:
+            element=self.__taula[h][p].info_tret
+            individuos= element.individus
             while i < len(individuos):
                 if individuos[i].get_id_by_individu() == numero_individu:
                     tetret=True

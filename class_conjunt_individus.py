@@ -21,7 +21,7 @@ class conjunt_individus:
         self.__individus = []
         self.arbre = self.llegeix_bintree_int(marca)
         
-        for i in range(1, self.__numero_individus):
+        for i in range(1, self.__numero_individus+1):
             self.__inicialitza_individus(i, read(str))
         
     def llegeix_bintree_int(self,marca):
