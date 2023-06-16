@@ -36,7 +36,7 @@ class individu():
         self.__trets.add(tret)
         
     def treure_tret(self, tret):
-        self.__trets.add(tret)
+        self.__trets.remove(tret)
         
     def te_tret(self, tret):
         return tret in self.__trets
