@@ -75,6 +75,9 @@ class conjunt_trets:
         if p != None: #Això vol dir que el tret ja el teniem
         
             elem = self.__taula[h][p]
+            
+            conjunt_individus.afegir_tret(nom_tret,numero_individu)
+
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
 
@@ -85,7 +88,6 @@ class conjunt_trets:
             elem2.individus.append(conjunt_individus.consulta_individu(numero_individu))
 
             elem2._replace(interseccio=nova_interseccio)
-            conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
             conjunt_individus.afegir_tret(nom_tret,numero_individu)
@@ -120,7 +122,9 @@ class conjunt_trets:
                     individuos.pop(i)
                     break
                 i+=1
-            if len(individuos)==0 :   
+            if len(individuos)==0 : 
+                conjunt_individus.treure_tret(tret,numero_individu)
+  
                 self.__taula[h][p] = self.__taula[h][-1]
                 self.__taula[h].pop()
                 self.__n -= 1
