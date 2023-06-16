@@ -78,19 +78,22 @@ class conjunt_trets:
             elem2=elem.info_tret
             interseccio_original= elem2.interseccio
 
-            cromosomes_nou_element=conjunt_individus.consulta_individu(numero_individu)
+            cromosomes_nou_element=conjunt_individus.consulta_individu(numero_individu).get_parell_cromosomes()
 
             nova_interseccio=parell_cromosomes.interseccion(interseccio_original,cromosomes_nou_element)
 
-            elem2.individus.append(numero_individu)
+            elem2.individus.append(conjunt_individus.consulta_individu(numero_individu))
 
             elem2._replace(interseccio=nova_interseccio)
             conjunt_individus.afegir_tret(nom_tret,numero_individu)
             self.__taula[h][p] = elem._replace(info_tret=elem2) # Genera NOU element
         else:
-            cromosomas=conjunt_individus.consulta_individu(numero_individu)
-            info=Subelement(cromosomas,[numero_individu])
             conjunt_individus.afegir_tret(nom_tret,numero_individu)
+
+            cromosomas=conjunt_individus.consulta_individu(numero_individu).get_parell_cromosomes()
+            
+            info=Subelement(cromosomas,[conjunt_individus.consulta_individu(numero_individu)])
+
             self.__taula[h].append(Element(nom_tret, info))
             self.__n += 1
         alfa = self.__n / self.__M
@@ -111,8 +114,8 @@ class conjunt_trets:
         tetret=False
         i=0
         if p != None:
-            while i < len(individuos): #tengi que cambiarlo por while
-                if i==numero_individu:
+            while i < len(individuos):
+                if individuos[i].get_id_by_individu() == numero_individu:
                     tetret=True
                     individuos.pop(i)
                     break
@@ -124,9 +127,9 @@ class conjunt_trets:
             
             elif tetret:
                 conjunt_individus.treure_tret(tret,numero_individu)
-                element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]))
+                element._replace(interseccio=conjunt_individus.consulta_individu(individuos[0]).get_parell_cromosomes())
                 for i in individuos:
-                    cromosomas=conjunt_individus.consulta_individu(i)
+                    cromosomas=conjunt_individus.consulta_individu(i).get_parell_cromosomes()
                     intersection= parell_cromosomes.interseccion(element.interseccio,cromosomas)
                     element._replace(interseccio=intersection)    
         else:
@@ -144,6 +147,6 @@ class conjunt_trets:
         if p is not None:
             interseccio=element.interseccio
             individus=element.individus
-            return interseccio,individus
+            return interseccio.get_cromosomas(),individus
         else:
             return 'error'
