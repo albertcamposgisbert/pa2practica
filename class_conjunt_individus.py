@@ -56,10 +56,8 @@ class conjunt_individus:
         
     def get_individu_by_id(self, individu_id):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
-        individu_in = False
         for individu in self.__individus:
             if individu.get_id_by_individu() == individu_id:
-                individu_in = True
                # cromosomas=individu.get_parell_cromosomes().get_cromosomas()
                 return individu
     def get_numero_cromosomes(self):
