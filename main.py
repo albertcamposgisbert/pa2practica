@@ -47,11 +47,12 @@ while comanda != "fi":
         if info is None:
             return 'error'
         else:
-            print(f"consulta tret {tret}",f"tiene intersección{info[0]}")
+            print(f"{tret}")
+            print(f"{info[0][0]}")
+            print(f"{info[0][1]}")
             print("individuos:")
             for i in info[1]:
-                print(i.get_id_by_individu())
-            # Llamar función que muestre el id del tret, los cromosomas, i los individuos involucrados (quizás __str__ de clase tret)
+                print(i.get_id_by_individu(),end='')
             
 
     elif comanda == "distribució_tret":
