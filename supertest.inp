@@ -30,9 +30,9 @@ afegir_tret vitiligo 3
 
 afegir_tret diabetis_1 1
 
-consultar vitiligo
+consulta_tret vitiligo
 
-consultar diabetis_1
+consulta_tret diabetis_1
 
 distribucio_tret vitiligo
 
@@ -40,7 +40,7 @@ distribucio_tret diabetis_1
 
 treure_tret vitiligo 3
 
-consultar vitiligo 
+consulta_tret vitiligo 
 
 distribucio_tret vitiligo
 
