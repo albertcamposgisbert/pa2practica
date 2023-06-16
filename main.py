@@ -48,14 +48,16 @@ while comanda != "fi":
         tret = read(str)
         info= conjunt_trets_instance.consulta_tret(tret)
         if info is None:
+            print(f"{tret}")
             print("error")
         else:
             print(f"{tret}")
+            print(f"{tret}")
             print(f"{info[0][0]}")
             print(f"{info[0][1]}")
-            print("individuos:")
             for i in info[1]:
                 print(i.get_id_by_individu(),end='')
+            print()
             
 
     elif comanda == "distribució_tret":
