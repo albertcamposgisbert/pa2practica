@@ -61,23 +61,23 @@ class conjunt_individus:
         
     def get_individu_by_id(self, individu_id):
         # Devuelve el individuo indexando en la lista por el id passado como argumento
-        individu_in = False
         for individu in self.__individus:
             if individu.get_id_by_individu() == individu_id:
-                individu_in = True
                # cromosomas=individu.get_parell_cromosomes().get_cromosomas()
                 return individu
-                
-        if individu_in == False:
-            print("error")
-    
     def get_numero_cromosomes(self):
         # Devuelve el total de cromosomas
         return self.__numero_cromosomes
-    
+
+ 
+    def get_num_individuos(self):
+            return self.__numero_individus    
     def consulta_individu(self, individu_id):
         individu = self.get_individu_by_id(individu_id)
-        print(individu)
+        if individu:
+            print(individu)
+        else:
+            print('error')
         
 
             

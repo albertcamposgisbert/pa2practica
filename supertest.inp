@@ -1,0 +1,66 @@
+experiment 5 8
+3 1 4 0 0 2 0 0 5 0 0
+1111111111111111
+0000000011111111
+0101010100001111
+1010101010101010
+1100110010101010
+
+consulta_individu 1
+consulta_individu 2
+consulta_individu 3
+consulta_individu 4
+consulta_individu 5
+
+consulta_individu 6
+consulta_individu 8
+consulta_individu 9
+
+consulta_tret vitiligo
+
+distribucio_tret vitiligo
+
+treure_tret vitiligo 5
+
+afegir_tret vitiligo 1
+
+afegir_tret vitiligo 1
+
+afegir_tret vitiligo 3
+
+afegir_tret diabetis_1 1
+
+consulta_tret vitiligo
+
+consulta_tret diabetis_1
+
+distribucio_tret vitiligo
+
+distribucio_tret diabetis_1
+
+treure_tret vitiligo 3
+
+consulta_tret vitiligo 
+
+distribucio_tret vitiligo
+
+afegir_tret soriasis 2
+
+
+afegir_tret diabetis_1 5
+
+treure_tret vitiligo 4
+
+treure_tret soriasis 4
+
+afegir_tret soriasis 3
+distribucio_tret soriasis
+
+afegir_tret soriasis 8
+
+
+fi
+
+
+
+
