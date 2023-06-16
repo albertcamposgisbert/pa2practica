@@ -66,7 +66,9 @@ while comanda != "fi":
             
 
     elif comanda == "distribució_tret":
-        pass
+        tret = read(str)
+        conjunt_trets_instance.distribucio_trets(tret)
+        print()
     
     comanda = read()
     print()

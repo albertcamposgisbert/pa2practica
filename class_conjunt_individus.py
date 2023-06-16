@@ -35,13 +35,12 @@ class conjunt_individus:
             return BinTree()
         
     def distribucio_inorder(self, tret):
-		
-        if not self.te_tret(tret):
-            self.set_root(self.get_root*-1)
-        self.get_right.distribucio_inorder(tret)
-        self.get_left.distribucio_inorder(tret)
-		
-        return self.inorder
+        def aux(auto, tret_aux):
+            if not auto.te_tret(tret_aux):
+                auto.set_root(auto.get_root*-1)
+            che=BinTree(auto.get_root, aux(auto.get_left,tret_aux), aux(auto.get_right,tret_aux))
+            return che
+        return aux(self,tret).inorder
         
     def __inicialitza_individus(self, id_individu, cromosomes):
         # Instancia un individuo de la clase individuo, y lo añade a "conjunt_individus"
